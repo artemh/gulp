@@ -16,11 +16,14 @@
 
 ## Documentation
 
-For a Getting started guide, API docs, recipes, making a plugin, etc. see the [documentation page](/docs/README.md)!
+For a Getting started guide, API docs, recipes, making a plugin, etc. check out or docs!
+
+- Need something reliable? Check out the [documentation for the current release](/docs/README.md)!
+- Want to help us test the latest and greatest? Check out the [documentation for the next release](https://github.com/gulpjs/gulp/tree/4.0)!
 
 ## Sample `gulpfile.js`
 
-This file is just a quick sample to give you a taste of what gulp does.
+This file will give you a taste of what gulp does.
 
 ```js
 var gulp = require('gulp');
@@ -252,15 +255,15 @@ function scripts() {
 
 Anyone can help make this project better - check out our [Contributing guide](/CONTRIBUTING.md)!
 
-[downloads-image]: http://img.shields.io/npm/dm/gulp.svg
-[npm-url]: https://npmjs.org/package/gulp
-[npm-image]: http://img.shields.io/npm/v/gulp.svg
+[downloads-image]: https://img.shields.io/npm/dm/gulp.svg
+[npm-url]: https://www.npmjs.com/package/gulp
+[npm-image]: https://img.shields.io/npm/v/gulp.svg
 
 [travis-url]: https://travis-ci.org/gulpjs/gulp
-[travis-image]: http://img.shields.io/travis/gulpjs/gulp.svg
+[travis-image]: https://img.shields.io/travis/gulpjs/gulp.svg
 
 [coveralls-url]: https://coveralls.io/r/gulpjs/gulp
-[coveralls-image]: http://img.shields.io/coveralls/gulpjs/gulp/master.svg
+[coveralls-image]: https://img.shields.io/coveralls/gulpjs/gulp/master.svg
 
 [gitter-url]: https://gitter.im/gulpjs/gulp
 [gitter-image]: https://badges.gitter.im/gulpjs/gulp.png

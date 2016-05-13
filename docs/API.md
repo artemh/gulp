@@ -28,7 +28,19 @@ gulp.src('client/templates/*.jade')
 #### globs
 Type: `String` or `Array`
 
-Glob or array of globs to read.
+Glob or array of globs to read. Globs use [node-glob syntax] except that negation is fully supported.
+
+A glob that begins with `!` excludes matching files from the glob results up to that point. For example, consider this directory structure:
+
+    client/
+      a.js
+      bob.js
+      bad.js
+
+The following expression matches `a.js` and `bad.js`:
+
+    gulp.src(['client/*.js', '!client/b*.js', 'client/bad.js'])
+
 
 Note that globs are evaluated in order, which means this is possible:
 
@@ -55,7 +67,6 @@ The working directory the folder is relative to.
 Type: `String`
 
 Default: `process.cwd()`
-
 
 ##### options.buffer
 Type: `Boolean`
@@ -233,6 +244,7 @@ var someTask = gulp.task('someTask');
 ```
 
 #### name
+Type: `String`
 
 If the name is not provided, the task will be named after the function
 `name` or `displayName` property. The name argument is required if the
@@ -322,6 +334,17 @@ var del = require('del');
 
 gulp.task('clean', function(done) {
   del(['.build/'], done);
+});
+
+// use an async result in a pipe
+gulp.task('somename', function(cb) {
+  getFilesAsync(function(err, res) {
+    if (err) return cb(err);
+    var stream = gulp.src(res)
+      .pipe(minify())
+      .pipe(gulp.dest('build'))
+      .on('end', cb);
+  });
 });
 ```
 
@@ -735,7 +758,6 @@ gulp.tree({ deep: true })
 ]
 */
 ```
-
 
 ### gulp.registry([registry])
 

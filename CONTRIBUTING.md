@@ -17,7 +17,7 @@ In particular, this community seeks the following types of contributions:
 - ideas: participate in an Issues thread or start your own to have your voice
 heard
 - resources: submit a PR to add to [docs README.md](/docs/README.md) with links to related content
-- outline sections: help us ensure that this repository is comprehensive. if
+- outline sections: help us ensure that this repository is comprehensive. If
 there is a topic that is overlooked, please add it, even if it is just a stub
 in the form of a header and single sentence. Initially, most things fall into
 this category
@@ -47,7 +47,7 @@ Please keep unstructured critique to a minimum. If you have solid ideas you
 want to experiment with, make a fork and see how it works.
 
 We will exclude you from interaction if you insult, demean or harass anyone.
-That is not welcome behaviour. We interpret the term "harassment" as
+That is not welcome behavior. We interpret the term "harassment" as
 including the definition in the
 [Citizen Code of Conduct](http://citizencodeofconduct.org/);
 if you have any lack of clarity about what might be included in that concept,
@@ -62,7 +62,7 @@ immediately. Whether you're a regular contributor or a newcomer, we care about
 making this community a safe place for you and we've got your back.
 
 Likewise any spamming, trolling, flaming, baiting or other attention-stealing
-behaviour is not welcome.
+behavior is not welcome.
 
 
 # Communication

@@ -13,7 +13,7 @@
   - Avoid config options that make your plugin do completely different tasks
   - For example: A JS minification plugin should not have an option that adds a header as well
 1. Your plugin shouldn't do things that other plugins are responsible for
-  - It should not concat, [gulp-concat](https://github.com/wearefractal/gulp-concat) does that
+  - It should not concat, [gulp-concat](https://github.com/contra/gulp-concat) does that
   - It should not add headers, [gulp-header](https://github.com/godaddy/gulp-header) does that
   - It should not add footers, [gulp-footer](https://github.com/godaddy/gulp-footer) does that
   - If it's a common but optional use case, document that your plugin is often used with another plugin
@@ -28,12 +28,14 @@
 1. Prefix any errors with the name of your plugin
   - For example: `gulp-replace: Cannot do regexp replace on a stream`
   - Use gulp-util's [PluginError](https://github.com/gulpjs/gulp-util#new-pluginerrorpluginname-message-options) class to make this easy
+1. Name your plugin appropriately: it should begin with "gulp-" if it is a gulp plugin
+  - If it is not a gulp plugin, it should not begin with "gulp-"
 1. The type of `file.contents` should always be the same going out as it was when it came in
   - If file.contents is null (non-read) just ignore the file and pass it along
   - If file.contents is a Stream and you don't support that just emit an error
     - Do not buffer a stream to shoehorn your plugin to work with streams. This will cause horrible things to happen.
 1. Do not pass the `file` object downstream until you are done with it
-1. Use [`file.clone()`](https://github.com/wearefractal/vinyl#clone) when cloning a file or creating a new one based on a file.
+1. Use [`file.clone()`](https://github.com/gulpjs/vinyl#clone) when cloning a file or creating a new one based on a file.
 1. Use modules from our [recommended modules page](recommended-modules.md) to make your life easier
 1. Do NOT require `gulp` as a dependency or peerDependency in your plugin
   - Using gulp to test or automate your plugin workflow is totally cool, just make sure you put it as a devDependency
@@ -46,7 +48,7 @@ gulp aims to be simple for users. By providing strict guidelines we are able to 
 
 ### What happens if I don't follow them?
 
-npm is open for everyone, and you are free to make whatever you want but these guidelines were prescribed for a reason. There are acceptances tests coming soon that will be integrated into the plugin search. If you fail to adhere to the plugin guidelines it will be publicly visible/sortable via a scoring system. People will always prefer to use plugins that match "the gulp way".
+npm is open for everyone, and you are free to make whatever you want but these guidelines were prescribed for a reason. There are acceptance tests coming soon that will be integrated into the plugin search. If you fail to adhere to the plugin guidelines it will be publicly visible/sortable via a scoring system. People will always prefer to use plugins that match "the gulp way".
 
 ### What does a good plugin look like?
 
@@ -77,7 +79,7 @@ function gulpPrefixer(prefixText) {
   return through.obj(function(file, enc, cb) {
     if (file.isNull()) {
       // return empty file
-      cb(null, file);
+      return cb(null, file);
     }
     if (file.isBuffer()) {
       file.contents = Buffer.concat([prefixText, file.contents]);

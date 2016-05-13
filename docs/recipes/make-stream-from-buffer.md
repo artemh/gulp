@@ -60,7 +60,7 @@ gulp.task('load-lib-files', function() {
 
 gulp.task('load-versions', function() {
   memory.versions = {};
-  // read the lib files from the disk
+  // read the version files from the disk
   return gulp.src('src/versions/version.*.js')
   // tap into the stream to get each file's data
   .pipe( tap(function(file) {
@@ -78,12 +78,13 @@ gulp.task('write-versions', function() {
   availableVersions.forEach(function(v) {
     // make a new stream with fake file name
     var stream = source('final.' + v);
+    
+    var streamEnd = stream;
+    
     // we load the data from the concatenated libs
     var fileContents = memory['libs.concat.js'] +
       // we add the version's data
       '\n' + memory.versions[v];
-
-    streams.push(stream);
 
     // write the file contents to the stream
     stream.write(fileContents);
@@ -93,11 +94,16 @@ gulp.task('write-versions', function() {
       stream.end();
     });
 
-    stream
+    streamEnd = streamEnd
     // transform the raw data into the stream, into a vinyl object/file
     .pipe(vinylBuffer())
     //.pipe(tap(function(file) { /* do something with the file contents here */ }))
     .pipe(gulp.dest('output'));
+    
+    // add the end of the stream, otherwise the task would finish before all the processing
+    // is done
+    streams.push(streamEnd);
+    
   });
 
   return es.merge.apply(this, streams);

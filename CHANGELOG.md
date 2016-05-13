@@ -1,5 +1,6 @@
 # gulp changelog
 
+<<<<<<< HEAD
 ## 4.0.0
 
 ### Task system changes
@@ -29,6 +30,13 @@
 - added `since` option to `gulp.src` which lets you only match files that have been modified since a certain date (for incremental builds)
 - fixed `gulp.src` not following symlinks
 - added `overwrite` option to `gulp.dest` which allows you to enable or disable overwriting of existing files
+=======
+## 3.9.1
+
+- update interpret to 1.0.0 (support for babel-register)
+- fix to include manpages in published tarball
+- documentation/recipe updates
+>>>>>>> master
 
 ## 3.9.0
 

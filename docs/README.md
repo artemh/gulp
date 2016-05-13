@@ -5,6 +5,8 @@
 * [CLI documentation](CLI.md) - Learn how to call tasks and use compilers
 * [Writing a Plugin](writing-a-plugin/README.md) - So you're writing a gulp plugin? Go here for the essential dos and don'ts.
 * [Spanish documentation][SpanishDocs] - gulp en Español.
+* [Simplified Chinese documentation][SimplifiedChineseDocs] - gulp 简体中文文档.
+* [Korean documentation][KoreanDocs] - gulp 한국어 참조 문서.
 
 
 ## FAQ
@@ -44,7 +46,7 @@ Post on [StackOverflow with a #gulp tag](http://stackoverflow.com/questions/tagg
 
 ## Examples
 
-- [Web Starter Kit gulpfile](https://github.com/google/web-starter-kit/blob/master/gulpfile.js)
+- [Web Starter Kit gulpfile](https://github.com/google/web-starter-kit/blob/master/gulpfile.babel.js)
 
 
 ## License
@@ -56,3 +58,5 @@ All the documentation is covered by the CC0 license *(do whatever you want with 
 To the extent possible under law, [Fractal](http://wearefractal.com) has waived all copyright and related or neighboring rights to this work.
 
 [SpanishDocs]: https://github.com/bucaran/gulp-docs-es
+[SimplifiedChineseDocs]: https://github.com/lisposter/gulp-docs-zh-cn
+[KoreanDocs]: https://github.com/preco21/gulp-docs-ko

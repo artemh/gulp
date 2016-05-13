@@ -1,6 +1,6 @@
 # Browserify + Globs
 
-[Browserify + Uglify2](https://github.com/gulpjs/gulp/blob/master/docs/recipes/browserify-uglify-sourcemap.md) shows how to setup a basic gulp task to bundle a JavaScript file with it's dependencies, and minify the bundle with UglifyJS while preserving source maps.
+[Browserify + Uglify2](https://github.com/gulpjs/gulp/blob/master/docs/recipes/browserify-uglify-sourcemap.md) shows how to setup a basic gulp task to bundle a JavaScript file with its dependencies, and minify the bundle with UglifyJS while preserving source maps.
 It does not, however, show how one may use gulp and Browserify with multiple entry files.
 
 See also: the [Combining Streams to Handle Errors](https://github.com/gulpjs/gulp/blob/master/docs/recipes/combining-streams-to-handle-errors.md) recipe for handling errors with Browserify or UglifyJS in your stream.
@@ -39,13 +39,7 @@ gulp.task('javascript', function () {
 
   // "globby" replaces the normal "gulp.src" as Browserify
   // creates it's own readable stream.
-  globby(['./entries/*.js'], function(err, entries) {
-    // ensure any errors from globby are handled
-    if (err) {
-      bundledStream.emit('error', err);
-      return;
-    }
-
+  globby(['./entries/*.js']).then(function(entries) {
     // create the Browserify instance.
     var b = browserify({
       entries: entries,
@@ -56,6 +50,9 @@ gulp.task('javascript', function () {
     // pipe the Browserify stream into the stream we created earlier
     // this starts our gulp pipeline.
     b.bundle().pipe(bundledStream);
+  }).catch(function(err) {
+    // ensure any errors from globby are handled
+    bundledStream.emit('error', err);
   });
 
   // finally, we return the stream, so gulp knows when this task is done.
