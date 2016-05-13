@@ -29,17 +29,17 @@ In the gulpfile we want to clean out the contents of the `mobile` folder before 
 var gulp = require('gulp');
 var del = require('del');
 
-gulp.task('clean:mobile', function () {
-  return del([
+gulp.task('clean:mobile', function (done) {
+  del([
     'dist/report.csv',
     // here we use a globbing pattern to match everything inside the `mobile` folder
     'dist/mobile/**/*',
     // we don't want to clean this file though so we negate the pattern
     '!dist/mobile/deploy.json'
-  ]);
+  ], done);
 });
 
-gulp.task('default', ['clean:mobile']);
+gulp.task('default', gulp.series('clean:mobile'));
 ```
 
 
@@ -76,7 +76,7 @@ gulp.task('clean:tmp', function () {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('default', ['clean:tmp']);
+gulp.task('default', gulp.series('clean:tmp'));
 ```
 
 This will only delete the tmp dir.
